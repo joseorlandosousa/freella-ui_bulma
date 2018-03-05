@@ -1,0 +1,413 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito:300,400,700);
+
+
+// Tipography
+.title {
+  font-weight: $weight-medium;
+}
+.subtitle {
+  font-weight: $weight-light;
+  color: $text;
+}
+
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  color: $grey-dark;
+
+}
+
+
+// Button
+
+.button {
+
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+    $color-invert: nth($pair, 2);
+    $color-dark: darken($color, 10%);
+    $color-light: lighten($color, 10%);
+    $color-lighter: lighten($color, 30%);
+
+    padding-top: 0.685em ;
+    padding-bottom: calc(0.685em - 2px);
+    padding-left:  0.95em;
+    padding-right:  0.95em;
+
+
+    height: 2.38em;
+    line-height: 1em;
+
+    transition: all $speed $easing;
+
+    .icon {
+
+      &.is-small {
+        height: 1em;
+        width: 1em;
+      }
+      &:first-child:not(:last-child) {
+        margin-right: 0.5em;
+        margin-left: 0;
+      }
+
+      &:last-child:not(:first-child) {
+        margin-left: 0.5em;
+        margin-right: 0;
+      }
+    }
+
+
+    &.is-#{$name} {
+      &.is-hovered,
+      &:hover {
+        background-color: $color;
+        border-color: transparent;
+
+
+        padding-top: calc(0.685em - 1px) ;
+        padding-bottom: calc(0.685em - 1px);
+
+        &:not(.is-inverted) {
+          box-shadow: inset 0 -2px 0 $color-dark;
+        }
+
+      }
+
+      &.is-focused,
+      &:focus {
+        border-color: transparent;
+        color: $color-invert;
+        &:not(:active) {
+          box-shadow: 0 0 0 3px $color-lighter
+        }
+
+      }
+      &.is-active,
+      &:active {
+
+        background-color: $color;
+        padding-top: calc(0.685em + 1px) ;
+        padding-bottom: calc(0.685em - 3px);
+        &:not(.is-inverted) {
+          box-shadow: inset 0 2px 0 $color-dark;
+        }
+      }
+    }
+
+
+  }
+}
+
+
+// FORM
+
+.label,
+.field-label .label {
+  color: $text;
+  display: block;
+  font-size: 0.875rem;
+  font-weight: $weight-medium;
+
+  letter-spacing: 0.1px;
+
+  &:not(:last-child){
+    margin-bottom: 0.5em;
+  }
+  // Sizes
+  &.is-small {
+    font-size: $size-small;
+  }
+  &.is-medium {
+    font-size: $size-normal;
+  }
+  &.is-large{
+    font-size: $size-normal;
+  }
+}
+
+// Input e Textarea
+
+.input,
+.textarea {
+  padding-top: 0.4em ;
+  padding-bottom: 0.35em ;
+  padding-left:  0.8em;
+  padding-right:  0.8em;
+
+  height: 2.38em;;
+
+  border-color: $grey-light;
+
+  color: $grey;
+}
+
+.tag:not(body) .delete {
+  margin-left: 0.25rem;
+  margin-right: -0.375rem;
+}
+
+// Radio e Checkbox
+
+.checkbox,
+.radio {
+  cursor: pointer;
+
+  input[type="radio"],
+  input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  input[type="radio"] {
+    margin-right: 0.3rem;
+  }
+
+  input[type="checkbox"] {
+    margin-right: 0.25rem;
+  }
+}
+
+// inline
+.checkbox + .checkbox,
+.radio + .radio {
+  margin-left: 1.6rem;
+}
+
+//block
+.checkbox + .checkbox.is-block,
+.radio + .radio.is-block {
+  margin-left: 0;
+  margin-top: calc(1rem - 5px);
+}
+
+// CUSTOM RADIO
+
+div.radio {
+  input[type="radio"] {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0 !important;
+    outline: 0;
+    z-index: -1;
+    width: 17px;
+    height: 17px;
+  }
+
+
+  [type="radio"]:checked + label,
+  [type="radio"]:not(:checked) + label
+  {
+      position: relative;
+      padding-left: 25px;
+      cursor: pointer;
+      display: inline-block;
+  }
+  [type="radio"]:checked + label:before,
+  [type="radio"]:not(:checked) + label:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 18px;
+      height: 18px;
+      border-radius: 100%;
+
+      background: #FFFFFF;
+      border: 1px solid $grey-light;
+      box-shadow: inset 0 3px 1px 0 $grey-lighter;
+
+      transition: all 0.2s ease-in-out;
+  }
+  &:hover [type="radio"]:not(:checked) + label:before {
+    border-color: $primary
+  }
+  [type="radio"]:checked + label:after,
+  [type="radio"]:not(:checked) + label:after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      border-radius: 100%;
+      transition: all 0.2s ease-in-out;
+
+      background: #FFFFFF;
+      box-shadow: 0 1px 1px 0 darken($primary, 10%), 0 0 1px 0 darken($primary, 10%);
+  }
+  [type="radio"]:not(:checked) + label:after {
+      opacity: 0;
+      -webkit-transform: scale(0);
+      transform: scale(0);
+
+
+  }
+  [type="radio"]:checked + label:after {
+      opacity: 1;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+  }
+  [type="radio"]:checked + label:before {
+    background-color: $primary;
+    box-shadow: inset 0 1px 3px 0 darken($primary, 10%);
+    border-color: transparent;
+  }
+
+
+  // focus
+  [type="radio"]:focus + label:before {
+    box-shadow: 0 0 1px 3px lighten($primary, 20%);
+    border-color: $primary
+  }
+}
+
+// CUSTOM CHECKBOX
+
+div.checkbox {
+  input[type="checkbox"] {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0 !important;
+    outline: 0;
+    z-index: -1;
+    width: 17px;
+    height: 17px;
+  }
+
+
+  [type="checkbox"]:checked + label,
+  [type="checkbox"]:not(:checked) + label
+  {
+      position: relative;
+      padding-left: 25px;
+      cursor: pointer;
+      display: inline-block;
+  }
+  [type="checkbox"]:checked + label:before,
+  [type="checkbox"]:not(:checked) + label:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 18px;
+      height: 18px;
+      border-radius: 3px;
+
+      background: #FFFFFF;
+      border: 1px solid $grey-light;
+      box-shadow: inset 0 3px 1px 0 $grey-lighter;
+
+      transition: all 0.2s ease-in-out;
+  }
+  &:hover [type="checkbox"]:not(:checked) + label:before {
+    border-color: $primary
+  }
+  [type="checkbox"]:checked + label:after,
+  [type="checkbox"]:not(:checked) + label:after {
+      content: '';
+      width: 6px;
+      height: 10px;
+      position: absolute;
+      top: 3px;
+      left: 6px;
+      transition: all 0.2s ease-in-out;
+
+      border: solid white;
+      border-width: 0 2px 2px 0;
+
+      transform: rotate(45deg);
+
+     // box-shadow: 0 1px 1px 0 darken($primary, 10%), 0 0 1px 0 darken($primary, 10%);
+  }
+  [type="checkbox"]:not(:checked) + label:after {
+      opacity: 0;
+      transform: scale(0), rotate(45deg);
+
+
+  }
+  [type="checkbox"]:checked + label:after {
+      opacity: 1;
+      transform: scale(1), rotate(45deg);
+  }
+  [type="checkbox"]:checked + label:before {
+    background-color: $primary;
+    box-shadow: inset 0 1px 3px 0 darken($primary, 10%);
+    border-color: transparent;
+  }
+
+
+  // focus
+  [type="checkbox"]:focus + label:before {
+    box-shadow: 0 0 1px 3px lighten($primary, 20%);
+    border-color: $primary
+  }
+}
+
+
+// SELECT
+.select select {
+  height: 2.38em;
+
+  border: 1px solid $grey-light;
+  box-shadow: 0 2px 1px 0 $grey-lighter;
+  border-radius: $radius;
+  color: $grey;
+
+  padding-top: 0.45em;
+  padding-bottom: 0.35em;
+}
+
+.field.has-addons .control .select select {
+  box-shadow: NONE;
+}
+
+
+// icons
+.control.has-icons-left .icon,
+.control.has-icons-right .icon {
+  top: 2px
+}
+
+
+// CARD
+a.card-footer-item {
+  color: $grey;
+
+  &:hover {
+    color: $primary
+  }
+}
+
+// table
+.table th {
+  font-weight: $weight-bold
+}
+
+// image
+.image {
+  border-radius: $radius;
+  overflow: hidden;
+}
+.card-image {
+  .image {
+    border-radius: 0;
+  }
+}
+
+.card {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+
+.field.has-addons + .field.has-addons {
+  margin-left: 0.5em
+}

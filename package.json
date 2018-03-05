@@ -1,0 +1,40 @@
+{
+  "name": "freella-ui_bulma",
+  "version": "0.0.1",
+  "description": "Gerador de tema personalizado para Bulma.io com Gulp.js com a base visual do freella.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm install && gulp"
+  },
+  "keywords": [
+    "freella",
+    "ui",
+    "elements",
+    "bulma",
+    "gulp",
+    "theme",
+    "generator"
+  ],
+  "author": "José Orlando Sousa <jose.orlando@gobee.com.br>",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.23.5",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-changed": "^3.1.1",
+    "gulp-cssimport": "^6.0.0",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-htmlmin": "^4.0.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.3",
+    "gulp-surge": "^0.1.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-util": "^3.0.8"
+  },
+  "dependencies": {
+    "animate.css": "^3.5.2",
+    "bulma": "^0.6.1"
+  }
+}

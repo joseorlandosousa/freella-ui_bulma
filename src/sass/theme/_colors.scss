@@ -1,0 +1,173 @@
+// Colors
+
+$black:        hsl(0, 0%, 4%) !default;
+$black-bis:    hsl(0, 0%, 7%) !default;
+$black-ter:    hsl(0, 0%, 14%) !default;
+
+$grey-darker:  #1a1a1a !default;
+$grey-dark:    #282828 !default;
+$grey:         #4A4A4A !default;
+$grey-light:   #9B9B9B !default;
+$grey-lighter: #ecedf1 !default;
+
+$white-ter:    lighten($grey-lighter, 2.6%) !default;
+$white-bis:    hsl(0, 0%, 98%) !default;
+$white:        hsl(0, 0%, 100%) !default;
+
+
+// primary color
+$primary:       #9013FE !default;
+$primary-darker:  darken($primary, 20%) !default;
+$primary-dark:    darken($primary, 10%) !default;
+$primary-light:   lighten($primary, 10%) !default;
+$primary-lighter: lighten($primary, 30%) !default;
+
+// secondary color
+$secondary:       #BD10E0 !default;
+$secondary-darker:  darken($secondary, 20%) !default;
+$secondary-dark:    darken($secondary, 10%) !default;
+$secondary-light:   lighten($secondary, 10%) !default;
+$secondary-lighter: lighten($secondary, 30%) !default;
+
+//orange
+$orange:       #ee7c32 !default;
+$orange-darker:  darken($orange, 20%) !default;
+$orange-dark:    darken($orange, 10%) !default;
+$orange-light:   lighten($orange, 10%) !default;
+$orange-lighter: lighten($orange, 20%) !default;
+
+// teal/turquoise
+$turquoise:       #1bb3bc !default;
+$turquoise-darker:  darken($turquoise, 20%) !default;
+$turquoise-dark:    darken($turquoise, 10%) !default;
+$turquoise-light:   lighten($turquoise, 10%) !default;
+$turquoise-lighter: lighten($turquoise, 20%) !default;
+
+// yellow
+$yellow:       #ffdd00 !default;
+$yellow-darker:  darken($yellow, 20%) !default;
+$yellow-dark:    darken($yellow, 10%) !default;
+$yellow-light:   lighten($yellow, 10%) !default;
+$yellow-lighter: lighten($yellow, 30%) !default;
+
+// Green
+$green:       #7ED321 !default;
+$green-darker:  darken($green, 20%) !default;
+$green-dark:    darken($green, 10%) !default;
+$green-light:   lighten($green, 10%) !default;
+$green-lighter: lighten($green, 30%) !default;
+
+// red
+$red:       #D0021B !default;
+$red-darker:  darken($red, 20%) !default;
+$red-dark:    darken($red, 10%) !default;
+$red-light:   lighten($red, 10%) !default;
+$red-lighter: lighten($red, 30%) !default;
+
+// cyan
+$cyan:         hsl(204, 86%,  53%) !default;
+$cyan-darker:  darken($cyan, 20%) !default;
+$cyan-dark:    darken($cyan, 10%) !default;
+$cyan-light:   lighten($cyan, 10%) !default;
+$cyan-lighter: lighten($cyan, 30%) !default;
+
+// blue
+$blue:         hsl(217, 71%,  53%) !default;
+$blue-darker:  darken($blue, 20%) !default;
+$blue-dark:    darken($blue, 10%) !default;
+$blue-light:   lighten($blue, 10%) !default;
+$blue-lighter: lighten($blue, 30%) !default;
+
+
+$purple: $primary;
+
+
+/////////
+
+$info: $grey !default;
+$success: $green !default;
+$warning: $yellow-light !default;
+$danger: $red !default;
+
+$light: $white-ter !default;
+$dark: $grey-dark !default;
+
+$gradient-primary: linear-gradient(135deg, $primary 0%, $secondary 99%);
+
+// Invert colors
+
+$primary-invert: findColorInvert($primary) !default;
+$secondary-invert: findColorInvert($secondary) !default;
+$orange-invert: findColorInvert($orange) !default;
+$yellow-invert: findColorInvert($yellow) !default;
+$green-invert: findColorInvert($green) !default;
+$turquoise-invert: findColorInvert($turquoise) !default;
+$cyan-invert: findColorInvert($cyan) !default;
+$blue-invert: findColorInvert($blue) !default;
+$red-invert: findColorInvert($red) !default;
+
+$info-invert: $cyan-invert !default;
+$success-invert: $green-invert !default;
+$warning-invert: $yellow-invert !default;
+$danger-invert: $red-invert !default;
+$light-invert: $dark !default;
+$dark-invert: $light !default;
+
+
+// General colors
+
+$background: $white-ter !default;
+
+$border: $grey-lighter !default;
+$border-hover: $grey-light !default;
+
+// Text colors
+
+$text: $grey !default;
+$text-invert: findColorInvert($text) !default;
+$text-light: $grey-light !default;
+$text-strong: $grey !default;
+
+// Code colors
+
+$code: $red !default;
+$code-background: $background !default;
+
+$pre: $text !default;
+$pre-background: $background !default;
+
+// Link colors
+
+$link: $primary !default;
+$link-invert: $primary-invert !default;
+$link-visited: $primary-dark !default;
+
+$link-hover: $secondary-darker !default;
+$link-hover-border: $secondary !default;
+
+$link-focus: $link-hover !default;
+$link-focus-border: $secondary-lighter !default;
+
+$link-active: $secondary-dark !default;
+$link-active-border: $secondary-dark !default;
+
+
+// nav
+$navbar-dropdown-item-active-color: $primary;
+$navbar-dropdown-arrow: $primary;
+$navbar-tab-active-border-bottom-color: $primary;
+$navbar-tab-active-color: $primary;
+$navbar-item-hover-color: $primary;
+
+// tabs
+$tabs-link-active-border-bottom-color: $primary;
+$tabs-link-active-color: $primary;
+$tabs-toggle-link-active-background-color: $primary;
+$tabs-toggle-link-active-border-color: $primary;
+
+
+// table
+$table-color: $grey;
+$table-foot-cell-color: $grey-dark;
+$table-head-cell-color: $grey-dark;
+$table-cell-heading-color: $grey-dark;

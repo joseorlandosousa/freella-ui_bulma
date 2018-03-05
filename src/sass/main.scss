@@ -1,0 +1,70 @@
+// importando plugins
+@import "../../node_modules/animate.css/animate.min.css" ;
+
+// import the bulma theme
+@import "./theme/theme";
+
+// your css
+.freella {
+  color: $primary;
+  font-weight: bold;
+  .is-secondary {
+    color: $secondary;
+  }
+
+  small {
+    font-size: 0.6em;
+    color: $grey-light;
+    font-weight: 300;
+  }
+
+  &.is-inverted {
+    &, * { color: $white; }
+    small {
+      opacity: 0.8;
+    }
+  }
+}
+
+.hero.is-gradient-primary {
+  background-image: $gradient-primary;
+  &,
+  .navbar-item,
+  .navbar-item .freella,
+  a,
+  .title,
+  .subtitle,
+  p { color: #fff;}
+
+  a:hover,
+  a:focus {
+    color: $primary;
+  }
+
+  .navbar-item.is-active {
+    color: $primary-lighter;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  .navbar-brand {
+    .navbar-item {
+      &:hover {
+        .freella {
+          color: $primary;
+          .is-secendary {
+            color: $secondary;
+          }
+        }
+      }
+    }
+  }
+}
+
+ .navbar-brand {
+  .navbar-item {
+    font-size: 1.5em;
+  }
+}

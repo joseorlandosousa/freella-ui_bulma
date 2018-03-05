@@ -1,0 +1,27 @@
+/**
+* Referência: https://bulma.io/documentation/overview/variables/
+*/
+
+// 1. Import the initial variables
+//@import "node_modules/bulma/sass/utilities/initial-variables.sass";
+
+// 2. Set your own initial variables
+@import "node_modules/bulma/sass/utilities/functions.sass";
+@import "./colors";
+@import "./tipography";
+@import "./variables";
+
+
+
+// 3. Add new color variables to the color map.
+@import "node_modules/bulma/sass/utilities/derived-variables.sass";
+
+$addColors: (
+  "secondary":($secondary, $secondary-invert),
+);
+$colors: map-merge($colors, $addColors);
+
+// 4. Import the rest of Bulma
+@import "node_modules/bulma/bulma";
+
+@import "./overrides";
