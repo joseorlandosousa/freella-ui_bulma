@@ -29,22 +29,23 @@ function handleError (error){
 }
 
 // Limpa a pasta public
-gulp.task('clean', function (cb) {
+function clean(cb) {
   return del([DEST], cb);
-});
+};
+exports.clean = clean;
 
 
 // HTML
-gulp.task('html', function() {
+function html() {
 
   return gulp.src('./index.html')
     .pipe(htmlmin({collapseWhitespace: true}).on('error', handleError))
     .pipe(gulp.dest(DEST + '/'))
-});
-
+};
+exports.html = html;
 
 // Gerando estilos complementares
-gulp.task('sass', function () {
+function css() {
   return gulp.src(SRC + 'sass/*.*')
     .pipe(sourcemaps.init())
     .pipe(sass({
@@ -61,31 +62,39 @@ gulp.task('sass', function () {
     }).on('error', handleError))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(DEST+'/css'));
-});
+};
+exports.css = css;
 
+function server () {
+  browserSync.init({
+      server: {
+          baseDir: './'
+      },
+      startPath: './index.html'
+  });
+};
 
-gulp.task('browser-sync', function() {
-    browserSync.init({
-        server: {
-            baseDir: './'
-        },
-        startPath: './index.html'
-    });
-});
+exports.server = server;
 
-gulp.task('deploy', ['html', 'sass'],function () {
+function deploy() {
   return surge({
     project: './public',         // Path to your static build directory
     domain: domain  // Your domain or Surge subdomain
   })
-})
+}
 
-gulp.task('watch', function() {
+
+
+function watch(done) {
    // Watch .sass files
-  gulp.watch([SRC + 'sass/*.scss', SRC + 'sass/*/*.scss'], ['sass', browserSync.reload]);
+  gulp.watch([SRC + 'sass/*.scss', SRC + 'sass/*/*.scss'], gulp.series('css', browserSync.reload));
   // Watch .html files
   gulp.watch('*.html', browserSync.reload);
+  done();
+};
 
-});
+exports.watch = watch;
 
-gulp.task('default', [ 'watch', 'browser-sync', 'sass']);
+
+exports.deploy = gulp.series(html, css, deploy);
+exports.default = gulp.series(watch, server, sass);
