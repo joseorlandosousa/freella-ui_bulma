@@ -52,10 +52,6 @@ function css() {
       includePaths: ['./node_modules/../'],
       outputStyle: 'compressed'
     }).on('error', handleError))
-    .pipe(autoprefixer({
-      browsers: ['last 2 versions'],
-      cascade: false
-    }))
     .pipe(cssimport({
       includePaths: './node_modules/*',
       matchPattern: "*.css" // process only css
